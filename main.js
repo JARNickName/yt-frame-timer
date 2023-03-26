@@ -56,6 +56,17 @@ function addlrt() {
 	document.getElementById('lrt').value = lrt;
 }
 
+function removelrt() {
+	var lrt = Number(document.getElementById('lrt').value);
+	let startFramelrt = document.getElementById('startobjlrt').value;
+    let endFramelrt = document.getElementById('endobjlrt').value;
+    if (typeof (startFramelrt) === 'undefined' || endFramelrt === 'undefined' || framerate === 'undefined') {
+        return
+    };
+	var lrt = Number(lrt - (endFramelrt - startFramelrt));
+	document.getElementById('lrt').value = lrt;
+}
+
 function computelrt() {
 
     // Initiate basic time variables

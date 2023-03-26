@@ -8,6 +8,16 @@
   <title>YouTube Frame Timer</title>
   <link rel="stylesheet" href="https://stackedit.io/style.css" />
   <script src="main.js"></script>
+  <style>
+  input[type="number"]::-webkit-inner-spin-button, 
+input[type="number"]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+}
+input[type="number"] { 
+    -moz-appearance: test-field; 
+}
+  </style>
 </head>
 
 <body class="stackedit">
@@ -16,7 +26,7 @@
     <h3 id="about">About</h3>
     <p>Takes start and stop points of a YouTube video, down to the frame, and gives the time between them in the format
       <code>1h 23m 45s 678ms</code>. Source code is <a
-        href="https://github.com/slashinfty/yt-frame-timer">available</a>.
+        href="https://github.com/JARNickName/yt-frame-timer">available</a>.
     </p>
     <h3 id="video-framerate">Video Framerate</h3>
     <p>Right click the YouTube video and select “Stats for nerds.” The third line is “Current / Optimal Res” - find the
@@ -48,7 +58,8 @@
       <input type="text" id="endobjlrt" style='width:100%' onchange='parseForTime(event)' />
     </p>
 	<button id="addlrtButton" onclick="addlrt()">Add LRT time</button>
-	<input type="number" id="lrt" readonly size="20" value="0" />
+	<input type="number" id="lrt" size="20" value="0" />
+	<button id="addlrtButton" onclick="removelrt()">Remove LRT time</button>
     <h3 id="video-time">Video Time</h3>
     <button id="computeButton" onclick="compute()">Compute time</button>&nbsp;<input type="text" id="time" readonly
       size="20" />&nbsp;<button id="computelrtButton" onclick="computelrt()">Compute LRT</button>
