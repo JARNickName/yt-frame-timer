@@ -45,15 +45,20 @@ function compute() {
     document.getElementById("modMessageButton").disabled = false;
 }
 
-function lrtOne() {
-	document.getElementById("expllrt").removeAttribute('hidden');
-	document.getElementById("computelrtButton").removeAttribute('hidden');
-	document.getElementById("hidlrtOneSt").removeAttribute('hidden');
-	document.getElementById("hidlrtOneEnd").removeAttribute('hidden');
+function addlrt() {
+	var lrt = Number(document.getElementById('lrt').value);
+	let startFramelrt = document.getElementById('startobjlrt').value;
+    let endFramelrt = document.getElementById('endobjlrt').value;
+    if (typeof (startFramelrt) === 'undefined' || endFramelrt === 'undefined' || framerate === 'undefined') {
+        return
+    };
+	var lrt = Number(lrt + (endFramelrt - startFramelrt));
+	document.getElementById('lrt').value = lrt;
 }
 
 function computelrt() {
-	// Initiate basic time variables
+
+    // Initiate basic time variables
     let hours = 0;
     let minutes = 0;
     let seconds = 0;
@@ -67,13 +72,10 @@ function computelrt() {
     if (typeof (startFrame) === 'undefined' || endFrame === 'undefined' || framerate === 'undefined') {
         return
     };
-	let startFrameLRTOne = document.getElementById('startobjlrtOne').value;
-    let endFrameLRTOne = document.getElementById('endobjlrtOne').value;
-    if (typeof (startFrameLRTOne) === 'undefined' || endFrameLRTOne === 'undefined') {
-        return
-    };
+
     // Calculate framerate
-    let frames = ((endFrame - startFrame) - (endFrameLRTOne - startFrameLRTOne)) * frameRate;
+	let lrt = Number(document.getElementById('lrt').value);
+    let frames = ((endFrame - startFrame) - lrt) * frameRate;
     seconds = Math.floor(frames / frameRate);
     frames = frames % frameRate;
     milliseconds = Math.round(frames / frameRate * 1000);
@@ -95,13 +97,12 @@ function computelrt() {
 
     // Show the time and mod message in the DOM
     let finalTime = hours.toString() + 'h ' + minutes.toString() + 'm ' + seconds.toString() + 's ' + milliseconds.toString() + 'ms';
-    let modMessage = `Mod Note: Time starts at ${parseFloat(startFrame).toFixed(3)} and ends at ${parseFloat(endFrame).toFixed(3)} at ${frameRate} fps - ${finalTime} with loading times removed.`;
+    let modMessage = `Mod Note: Time starts at ${parseFloat(startFrame).toFixed(3)} and ends at ${parseFloat(endFrame).toFixed(3)} at ${frameRate} fps - ${finalTime} with load times removed.`;
     document.getElementById('time').value = finalTime;
     document.getElementById('modMessage').disabled = false;
     document.getElementById('modMessage').innerText = modMessage;    
     document.getElementById("modMessageButton").disabled = false;
 }
-
 
 function copyModMessage() {
 	// Allow user to copy mod message to clipboard

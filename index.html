@@ -38,19 +38,20 @@
       <label for="endobj">Ending frame: </label>
       <input type="text" id="endobj" style='width:100%' onchange='parseForTime(event)' />
     </p>
-	<button type="button" onclick="lrtOne()">Add load time</button>
-	<p hidden id="expllrt">First, fill in all fields then press Compute Time and then press Compute LRT</p>
-    <p hidden id="hidlrtOneSt">
-      <label for="startobj">Starting frame LRT1: </label>
-      <input type="text" id="startobjlrtOne" style='width:100%' onchange='parseForTime(event)' />
+	<p>First, fill the fields then press Add LRT Time. Do that as many times as needed. After that press Compute LRT</p>
+    <p>
+      <label for="startobjlrt">Starting frame LRT: </label>
+      <input type="text" id="startobjlrt" style='width:100%' onchange='parseForTime(event)' />
     </p>
-    <p hidden id="hidlrtOneEnd">
-      <label for="endobj">Ending frame LRT1: </label>
-      <input type="text" id="endobjlrtOne" style='width:100%' onchange='parseForTime(event)' />
+    <p>
+      <label for="endobjlrt">Ending frame LRT: </label>
+      <input type="text" id="endobjlrt" style='width:100%' onchange='parseForTime(event)' />
     </p>
+	<button id="addlrtButton" onclick="addlrt()">Add LRT time</button>
+	<input type="number" id="lrt" readonly size="20" value="0" />
     <h3 id="video-time">Video Time</h3>
     <button id="computeButton" onclick="compute()">Compute time</button>&nbsp;<input type="text" id="time" readonly
-      size="20" />&nbsp;<button hidden id="computelrtButton" onclick="computelrt()">Compute LRT</button>
+      size="20" />&nbsp;<button id="computelrtButton" onclick="computelrt()">Compute LRT</button>
     <p>
       <textarea id="modMessage" cols="40" rows="5" disabled></textarea>
     </p>
