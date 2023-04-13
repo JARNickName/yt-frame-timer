@@ -108,7 +108,7 @@ function computelrt() {
 
     // Show the time and mod message in the DOM
     let finalTime = hours.toString() + 'h ' + minutes.toString() + 'm ' + seconds.toString() + 's ' + milliseconds.toString() + 'ms';
-    let modMessage = `Mod Note: Time starts at ${parseFloat(startFrame).toFixed(3)} and ends at ${parseFloat(endFrame).toFixed(3)} at ${frameRate} fps - ${finalTime} with load times removed.`;
+    let modMessage = `Mod Note: Time starts at ${parseFloat(startFrame).toFixed(3)} and ends at ${parseFloat(endFrame).toFixed(3)} at ${frameRate} fps - ${finalTime} with LRT.`;
     document.getElementById('time').value = finalTime;
     document.getElementById('modMessage').disabled = false;
     document.getElementById('modMessage').innerText = modMessage;    
